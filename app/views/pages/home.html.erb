@@ -1,0 +1,32 @@
+<title bridge_title="Welcome to Lucas">Welcome to Lucas</title>
+<%= link_to "", "#", data: { controller: "bridge--nav-button", bridge_title: " ", bridge_position: "left"} %>
+
+<section class="mx-auto max-w-screen-xl <%= turbo? ? 'py-16' : 'py-4'%> sm:px-6 lg:px-8" data-controller="remove-back-button">
+   <div
+      class="mx-auto max-w-screen-xl px-4 py-4 lg:flex <%= 'lg:h-screen' if turbo? %> lg:items-center"
+      >
+      <div class="mx-auto max-w-xl text-center">
+         <h1 class="text-2xl font-extrabold sm:text-2xl">
+            Bienvenue 欢迎 Willkommen Benvenuto Bem-vindo  ようこそ
+            <strong class="font-extrabold text-indigo-700 sm:block">
+            Welcome Bienvenido
+            </strong>
+         </h1>
+         <p class="mt-8 sm:text-xl/relaxed">
+            Join us to discover and connect with like-minded individuals. Sign in if you're already part of our family, or create an account to get started.
+         </p>
+         <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <a
+               class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+               href="<%= new_user_session_path %>"
+               >
+            Sign In
+            </a>
+            <a class="block w-full rounded-lg border border-indigo-600 px-5 py-3 text-sm font-medium text-indigo-600"
+               href="<%= new_user_registration_path %>">
+               Sign Up  
+            </a>
+         </div>
+      </div>
+   </div>
+</section>

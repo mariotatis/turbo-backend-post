@@ -1,0 +1,31 @@
+<title bridge_title="Profile">Profile</title>
+<%= link_to "", user_settings_path, data: { controller: "bridge--nav-button", bridge_title: "Settings", bridge_systemName: "gearshape.fill"} %>
+
+<div class="p-10 mt-20 font-sans w-full flex">
+  <div class="card w-96 mx-auto bg-white">
+    <img class="w-32 mx-auto rounded-full -mt-20" src="https://randomuser.me/api/portraits/men/28.jpg" alt="">
+    <div class="text-center mt-2 font-light text-s"><%= @user.email%></div>
+    <div class="text-center text-3xl font-bold text-gray-900"><%= @user.name.titleize %></div>
+    <hr class="mt-8">
+    <div class="px-6 text-center mt-2 font-light text-sm">
+      <p>
+        Front end Developer, avid reader. Love to take a long walk, swim
+      </p>
+    </div>
+
+  <div class="mt-6 flex gap-14">
+      <div class="flex flex-col items-center justify-center">
+      <p class="text-2xl font-bold text-navy-700 dark:text-white">170</p>
+      <p class="text-sm font-normal text-gray-600">Posts</p>
+      </div>
+      <div class="flex flex-col items-center justify-center">
+      <p class="text-2xl font-bold text-navy-700 dark:text-white">25</p>
+      <p class="text-sm font-normal text-gray-600">Liked</p>
+      </div>
+      <div class="flex flex-col items-center justify-center">
+      <p class="text-2xl font-bold text-navy-700 dark:text-white">14</p>
+      <p class="text-sm font-normal text-gray-600">Pinned</p>
+  </div>
+    
+  </div>
+</div>

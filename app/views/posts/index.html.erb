@@ -1,0 +1,34 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<% if current_page?(bookmarked_path) %>
+  <title bridge_title="Pinned">Pinned</title>
+<% elsif current_page?(liked_path) %>
+  <title bridge_title="Liked">Liked</title>
+<% else %>
+  <title bridge_title="Posts">Posts</title>
+
+  <%#= link_to "", new_post_path, data: { controller: "bridge--nav-button", bridge_title: "New Post", bridge_systemName: "plus.circle" } %>
+  <%= link_to "", profile_path, data: { controller: "bridge--nav-button", bridge_title: "Numbers", bridge_systemName: "person.crop.circle" } %>
+
+  <%= link_to "", bookmarked_path, data: { controller: "bridge--nav-button", bridge_title: "📌", bridge_systemName: "pin.circle", bridge_position: "left"} %>
+  <%= link_to "", liked_path, data: { controller: "bridge--nav-button", bridge_title: "Liked", bridge_systemName: "heart.circle", bridge_position: "left"} %>
+<% end %>
+
+<%
+=begin%>
+ <p class="mt-1.5 text-sm text-gray-500">
+  Let's write a new blog post! 🎉 | <%= link_to 'Exit', destroy_user_session_path, method: :delete%>
+</p> 
+<%
+=end%>
+
+<% @posts.each do |post| %>
+  <%= render post %>
+<% end %>
+
+<a href="<%= new_post_path %>">
+    <div class="fixed z-90 bottom-10 right-5 bg-indigo-600 w-16 h-16 rounded-full drop-shadow-lg flex justify-center items-center text-white text-2xl hover:bg-blue-700 hover:drop-shadow-2xl">
+    <i class="fa-solid fa-plus"></i>
+    </div>
+</a>

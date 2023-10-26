@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="relative" dir="ltr">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="turbo:authenticated" content="<%= user_signed_in? %>"> 
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <%= javascript_include_tag 'posts' %>
+
+  <% if turbo? %>
+    <style>.hide-on-mobile { display: none; }</style>
+  <% end %>
+</head>
+
+<body class=" font-sans antialiased" data-new-gr-c-s-check-loaded="14.1130.0" data-gr-ext-installed="">
+
+<%#= request.user_agent%>
+  <% unless turbo? %>
+    <%= render 'shared/header' %>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <p style="display:none" data-controller="bridge--flash-message"><%= flash[:alert] %></p>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <p style="display:none" data-controller="bridge--flash-message"><%= flash[:notice] %></p>
+  <% end %> 
+
+
+  <% if turbo? || !user_signed_in? %>
+      <div class="p-6">
+          <%= yield %> 
+      </div>
+  <% else %>
+    <div class="mt-8 w-10/12 mx-auto max-w-screen-xl">
+      <div class="lg:col-start-2 col-span-12 lg:col-span-10 grid grid-cols-6 gap-x-8 gap-y-10 pb-12 mx-auto">
+        <div class="md:col-span-4">
+            <%= yield %> 
+        </div>
+        <%= render 'shared/side' %>
+      </div>
+    </div>
+  <% end %>
+
+</body>

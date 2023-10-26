@@ -1,0 +1,8 @@
+<% if notice.present? %>
+  <p style="color: green" data-controller="bridge--flash-message"><%= notice %></p>
+<% end %>
+
+<%= render @post %>
+
+<%= link_to "Edit Post", edit_post_path(@post), class: "hide-on-mobile mt-1 pl-4 text-sm", data: { controller: "bridge--nav-button", bridge_title: "Edit" } %>
+<%= link_to "Destroy this post", @post, "data-turbo-method": :delete, class: "mt-1 pl-4 text-sm" %>
