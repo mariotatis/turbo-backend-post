@@ -5,4 +5,4 @@
 <%= render @post %>
 
 <%= link_to "Edit Post", edit_post_path(@post), class: "hide-on-mobile mt-1 pl-4 text-sm", data: { controller: "bridge--nav-button", bridge_title: "Edit" } %>
-<%= link_to "Destroy this post", @post, "data-turbo-method": :delete, class: "mt-1 pl-4 text-sm" %>
+<%= link_to 'Destroy this post', @post,  "data-turbo-method": :delete, method: :delete,  class: "mt-1 pl-4 text-sm" , data: { turbo_confirm: 'Are you sure you want to delete this post?' } %>
