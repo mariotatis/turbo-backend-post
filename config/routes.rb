@@ -27,5 +27,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'registrations/sessions' # Specify the custom sessions controller here
   }
+
+  namespace :api do
+    namespace :v1 do
+      resources :posts, only: [:index]
+    end
+  end
   
 end

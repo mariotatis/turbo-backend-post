@@ -14,17 +14,14 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(AdminUser)
       admin_root_path
     else
+      resource.update(token: SecureRandom.hex)
       posts_path
     end
   end
 
   def after_sign_out_path_for(resource)
-    # Redirect the user to the `SignOutsController` index action.
     home_path
   end
+  
 
-  # def after_sign_out_path_for(resource_or_scope)
-  #   puts '----------------------------------signed out----------------------------------'
-  #   root_path(turbolinks: false, notice: "You are now signed out...")
-  # end
 end

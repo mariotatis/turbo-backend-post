@@ -16,12 +16,10 @@ class Registrations::SessionsController < Devise::SessionsController
 
 
   #DELETE /resource/sign_out
-  # def destroy
-  #   puts '----------------------------------signed out----------------------------------'
-  #   redirect_to home_path, notice: "You have successfully logged out...", turbolinks: false
-  #   return
-  #   super
-  # end
+  def destroy
+    current_user.update(token: nil)
+    super
+  end
 
   # protected
 
