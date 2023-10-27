@@ -3,6 +3,9 @@
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="/" class="flex items-center">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Lucas</span>
+                <% if user_signed_in? %>
+                    <span class="self-center text-xl font-semibold whitespace-nowrap text-green-400"> •</span>
+                <% end %>
             </a>
             <div class="flex items-center lg:order-2 text-gray-400">
             <% if user_signed_in? %>

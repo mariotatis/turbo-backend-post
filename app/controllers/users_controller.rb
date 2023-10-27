@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
+    @posts = current_user.posts
+    @liked_posts_count = @posts.count { |post| post.liked? }
+    @bookmarked_posts_count = @posts.count { |post| post.bookmarked? }
   end
 
   def settings
