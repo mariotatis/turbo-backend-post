@@ -1,5 +1,6 @@
+var pageLoaded = false;
+
 function toggleTag(button) {
-  console.log("click")        
   event.preventDefault();
   button.classList.toggle('selected-tag');
   const selectedTags = document.querySelectorAll('.selected-tag');
@@ -8,18 +9,17 @@ function toggleTag(button) {
   document.getElementById('post_tags').value = selectedTagsText;
 }
 document.addEventListener("turbo:load", function() {
+
   const tagButtons = document.querySelectorAll(".tag-cloud button");
   const tagsTextField = document.querySelector('input[name="post[tags]"]');
   if (tagsTextField && tagsTextField.value) {
     const selectedTags = tagsTextField.value.split(' | ');
-    console.log(selectedTags)
     tagButtons.forEach(button => {
       const buttonTag = button.textContent.trim();
       if (selectedTags.includes(buttonTag)) {
         button.classList.add('selected-tag');
       }
     });
-    console.log(tagsTextField.value)
   }
 });
 

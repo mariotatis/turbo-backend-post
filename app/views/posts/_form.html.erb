@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+
 <div class="mx-auto max-w-screen-xl">
 
   <%= form_with(model: post, data: { controller: "bridge--form", action: "turbo:submit-start->bridge--form#submitStart turbo:submit-end->bridge--form#submitEnd" }) do |form| %>
@@ -5,7 +7,7 @@
 
     <div class="my-2">
       <div class="relative">
-        <%= form.text_field :title, class: "w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm capitalize", placeholder: "Enter title" %>
+        <%= form.text_field :title, class: "w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm capitalize", placeholder: "Your title" %>
       </div>
     </div>
     
@@ -19,44 +21,37 @@
 
     <div>
       <div class='flex flex-col relative w-full rounded-lg overflow-hidden mx-auto' x-data="{maximum: ''}">
-        <%= form.text_area :description, rows: 3, class: "w-full rounded-lg border-gray-200 p-4 pe-12 h-32 text-sm shadow-sm", placeholder: "Enter description" %>
+        <%= form.text_area :description, rows: 3, class: "h-auto min-h-[80px] w-full rounded-lg border-gray-200 p-4 pe-12 h-32 text-sm shadow-sm", placeholder: "Short description", "x-data" => "{ resize () { $el.style.height = '0px'; $el.style.height = $el.scrollHeight + 'px' } }", "x-init" => "resize()", "@input" => "resize()" %>
       </div>
     </div>
 
-     <style>
-      .selected-tag {
-      background-color: #5046e6; /* Change this to your desired selected background color */
-      color: #fff; /* Text color for selected tags */
-      }
-      #selectedTags {
-      width: 100%;
-      }
-    </style>
+    <div class="my-2">
+      <div class="relative">
+        <%= form.text_field :post_url, class: "w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm", placeholder: "Page URL (Optional)" %>
+      </div>
+    </div>
+
     <div>
     <p class="text-s ml-1 pt-3 text-gray-500">Select tags for your post</p>
       <div class="tag-cloud flex justify-center flex-wrap gap-2 p-4  w-full my-1">
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Travel</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Food</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Art</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Music</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Technology</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Photography</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Sports</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Fashion</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">History</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Nature</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Health</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Nurition</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Education</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Fitness</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-100 px-5 py-1 text-s text-purple-600" onclick="toggleTag(this)">Business</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Lucas</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Mateo</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Sandri</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Family</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Home</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Travel</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Food</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Art</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Music</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Tech</button>
+          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Stuff</button>
           <!-- Add more tags here -->
       </div>
       <%= form.hidden_field :tags, class: "w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm capitalize" %>
     </div>
 
     <div class="flex items-center justify-between my-2">      
-      <%= form.submit "Save", class: "cursor-pointer block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white", data: { controller: "bridge--nav-button", bridge_title: "Save" } %>
+      <%= form.submit "Save", class: "hide-on-mobile cursor-pointer block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white", data: { controller: "bridge--nav-button", bridge_title: "Save" } %>
     </div>
   <% end %>
 

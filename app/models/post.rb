@@ -6,6 +6,19 @@ class Post < ApplicationRecord
     validates :description, presence: true
     
     def self.ransackable_attributes(auth_object = nil)
-        ["created_at", "user_id", "description", "id", "image_url", "tags", "title", "updated_at", "liked", "bookmarked"]
+        [
+        "id",
+        "user_id",
+        "title",
+        "description",        
+        "image_url",
+        "tags",
+        "post_url",
+        "liked",
+        "bookmarked",
+        "created_at",
+        "updated_at"
+        ]
+
     end
 end

@@ -5,6 +5,6 @@ ActiveAdmin.register Post do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :description, :tags, :image_url, :liked, :bookmarked, :user_id
+  permit_params :title, :description, :tags, :image_url, :liked, :bookmarked, :user_id, :post_url
     
 end

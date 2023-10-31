@@ -1,8 +1,58 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <% if notice.present? %>
   <p style="color: green" data-controller="bridge--flash-message"><%= notice %></p>
 <% end %>
 
-<%= render @post %>
+<article class="rounded-lg border border-gray-100 bg-white p-4 mb-5 shadow-lg">
+  <time datetime="2022-10-10" class="block text-xs text-gray-500">
+    <%= @post.created_at.strftime('%B %d, %Y %I:%M %p') %>
+  </time>
+  <h3 class="mt-0.5 text-lg font-bold text-gray-900">
+    <%= @post.title %>
+  </h3>
+  <p class="mt-2 text-sm/relaxed text-gray-600">
+    <%= @post.description %>
+  </p>
+
+  <% unless @post.post_url.empty? %>
+    <hr class='m-4'/>
+    <p>
+      <a href="<%= @post.post_url %>" target="_blank" class="text-sm text-indigo-500 underline">
+        <%= truncate(@post.post_url, length: 40, omission: '...') %>
+      </a>
+    </p>
+
+    <!-- Display placeholder content while fetching @page data -->
+    <div id="pageData" data-controller="post" data-id="<%= @post.id %>">
+      <p class='text-xs text-gray-500'>Loading...<p>
+    </div>
+
+  <% end %>
+
+  <% unless @post.tags.blank? %>
+    <div class="mt-4 flex flex-wrap gap-1">
+      <% @post.tags.split(' | ').each do |tag| %>
+        <span class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm text-purple-600">
+          <%= tag.strip %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="flex items-end mt-4">
+    <button class="like-button text-red-600 middle none center mr-4 h-8 w-8 rounded-lg <%= @post.liked ? 'bg-purple-200' : 'border border-purple-100'%>"
+      data-post-id="<%= @post.id %>"
+      data-liked="<%= @post.liked %>">
+      ❤️
+    </button>
+    <button class="bookmark-button middle none center mr-4 h-8 w-8 rounded-lg <%= @post.bookmarked ? 'bg-purple-200' : 'border border-purple-100'%>"
+      data-post-id="<%= @post.id %>"
+      data-bookmarked="<%= @post.bookmarked %>">
+      📌
+    </button>
+  </div>
+</article>
 
 <%= link_to "Edit Post", edit_post_path(@post), class: "hide-on-mobile mt-1 pl-4 text-sm", data: { controller: "bridge--nav-button", bridge_title: "Edit" } %>
-<%= link_to 'Destroy this post', @post,  "data-turbo-method": :delete, method: :delete,  class: "mt-1 pl-4 text-sm" , data: { turbo_confirm: 'Are you sure you want to delete this post?' } %>
+<%= link_to 'Destroy this post', @post, "data-turbo-method": :delete, method: :delete, class: "mt-1 pl-4 text-sm", data: { turbo_confirm: 'Are you sure you want to delete this post?' } %>

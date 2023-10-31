@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   include AuthenticationHelper
 
-  before_action :set_post, only: %i[ show edit update destroy toggle_like toggle_bookmark ]
+  before_action :set_post, except: [:fetch_page, :index, :new, :create]
 
   # GET /posts or /posts.json
   def index
@@ -14,7 +14,20 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1 or /posts/1.json
-  def show    
+  def show
+  end
+
+  def fetch_page
+    @post = current_user.posts.find(params[:post_id])
+    if @post.post_url.present?
+      @page = MetaInspector.new(@post.post_url)
+    else
+      @page = nil
+    end
+  
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /posts/new
@@ -90,8 +103,9 @@ class PostsController < ApplicationController
       @post = current_user.posts.find(params[:id])
     end
 
+
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description, :image_url, :tags)
+      params.require(:post).permit(:title, :description, :image_url, :tags, :post_url)
     end
 end

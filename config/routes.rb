@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       post 'toggle_bookmark'
     end
   end
+
+  get '/posts/fetch_page/:post_id', to: 'posts#fetch_page', as: 'fetch_page'
   
   devise_for :users, controllers: {
     registrations: 'users/registrations',

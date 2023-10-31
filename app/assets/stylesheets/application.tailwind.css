@@ -17,3 +17,11 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 }
+
+.selected-tag {
+  background-color: #5046e6;
+  color: #fff;
+}
+#selectedTags {
+  width: 100%;
+}

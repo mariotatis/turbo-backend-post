@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
       admin_root_path
     else
       resource.update(token: SecureRandom.hex)
+      request.user_agent.include?("Turbo Native") ?  posts_path(token: resource.token) :  posts_path
       posts_path
     end
   end
@@ -23,5 +24,4 @@ class ApplicationController < ActionController::Base
     home_path
   end
   
-
 end
