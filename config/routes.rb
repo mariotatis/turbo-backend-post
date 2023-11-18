@@ -15,12 +15,15 @@ Rails.application.routes.draw do
 
   get 'turbo', to: "turbo#index", as: :turbo
 
-
   resources :posts do
     member do
       post 'toggle_like'
       post 'toggle_bookmark'
     end
+  end
+
+  resources :posts do
+    resources :comments, only: [:create, :destroy]
   end
 
   get '/posts/fetch_page/:post_id', to: 'posts#fetch_page', as: 'fetch_page'

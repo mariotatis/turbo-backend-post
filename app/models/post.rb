@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 
     belongs_to :user
+    has_many :comments, dependent: :destroy, counter_cache: :comments_counter
 
     validates :title, presence: true
     validates :description, presence: true

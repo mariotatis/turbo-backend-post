@@ -8,11 +8,10 @@
 <% else %>
   <title bridge_title="Posts">Posts</title>
 
-  <%#= link_to "", new_post_path, data: { controller: "bridge--nav-button", bridge_title: "New Post", bridge_systemName: "plus.circle" } %>
-  <%= link_to "", profile_path, data: { controller: "bridge--nav-button", bridge_title: "Numbers", bridge_systemName: "person.crop.circle" } %>
-
-  <%= link_to "", bookmarked_path, data: { controller: "bridge--nav-button", bridge_title: "📌", bridge_systemName: "pin.circle", bridge_position: "left"} %>
-  <%= link_to "", liked_path, data: { controller: "bridge--nav-button", bridge_title: "Liked", bridge_systemName: "heart.circle", bridge_position: "left"} %>
+  <%#= link_to "", new_post_path, data: { controller: "bridge--nav-button", bridge_title: "New Post" } %>
+  <%= link_to "", profile_path, data: { controller: "bridge--nav-button", bridge_title: "Profile", bridge_systemName: "person.fill", bridge_color: "#0084c6" } %>
+  <%= link_to "", liked_path, data: { controller: "bridge--nav-button", bridge_title: "Liked", bridge_systemName: "heart.fill", bridge_position: "left", bridge_color: "#0084c6"} %>    
+  <%= link_to "", bookmarked_path, data: { controller: "bridge--nav-button", bridge_title: "Pinned", bridge_systemName: "bookmark.fill", bridge_position: "left",bridge_color: "#0084c6"} %>
 <% end %>
 
 <%
@@ -28,7 +27,7 @@
 <% end %>
 
 <a href="<%= new_post_path %>">
-    <div class="fixed z-90 bottom-10 right-5 bg-indigo-600 w-16 h-16 rounded-full drop-shadow-lg flex justify-center items-center text-white text-2xl hover:bg-blue-700 hover:drop-shadow-2xl">
+    <div class="fixed z-90 bottom-10 right-5 bg-sky-600 w-16 h-16 rounded-full drop-shadow-lg flex justify-center items-center text-white text-2xl hover:drop-shadow-2xl">
     <i class="fa-solid fa-plus"></i>
     </div>
 </a>

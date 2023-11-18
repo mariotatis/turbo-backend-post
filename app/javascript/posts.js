@@ -40,7 +40,8 @@ document.addEventListener("turbo:load", function() {
 });
 
 function toggleLike(event) {
-  const button = event.target;
+  const button = event.target.closest('button');
+
   const postId = button.getAttribute("data-post-id");
   const liked = button.getAttribute("data-liked") === "true";
 
@@ -52,12 +53,11 @@ function toggleLike(event) {
       const newLiked = !liked;
       button.setAttribute("data-liked", newLiked);
 
+      const heartIcon = button.querySelector('i.fa-heart');
       if (newLiked) {
-        button.classList.add('bg-purple-200', 'text-purple-600');
-        button.classList.remove('border', 'border-purple-100');
+        heartIcon.className = "fa-solid fa-heart text-red-600";
       } else {
-        button.classList.remove('bg-purple-200', 'text-purple-600');
-        button.classList.add('border', 'border-purple-100');
+        heartIcon.className = "fa-regular fa-heart text-red-600";
       }
     })
     .catch(error => {
@@ -66,7 +66,7 @@ function toggleLike(event) {
 }
 
 function toggleBookmark(event) {
-  const button = event.target;
+  const button = event.target.closest('button');
   const postId = button.getAttribute("data-post-id");
   const bookmarked = button.getAttribute("data-bookmarked") === "true";
 
@@ -79,12 +79,11 @@ function toggleBookmark(event) {
       const newBookmarked = !bookmarked;
       button.setAttribute("data-bookmarked", newBookmarked);
 
+      const bookmarkIcon = button.querySelector('i.fa-bookmark');
       if (newBookmarked) {
-        button.classList.add('bg-purple-200', 'text-purple-600');
-        button.classList.remove('border', 'border-purple-100');
+        bookmarkIcon.className = "fa-solid fa-bookmark text-sky-900";
       } else {
-        button.classList.remove('bg-purple-200', 'text-purple-600');
-        button.classList.add('border', 'border-purple-100');
+        bookmarkIcon.className = "fa-regular fa-bookmark text-sky-900";
       }
     })
     .catch(error => {

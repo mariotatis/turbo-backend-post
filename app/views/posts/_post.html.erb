@@ -1,36 +1,10 @@
-<article class="rounded-lg border border-gray-100 bg-white p-4 mb-5 <%= turbo_native_app? ? 'shadow-lg' : 'shadow-sm hover:shadow-lg' %>">
-
-<a href="<%= post_path(post) %>">
-    <time datetime="2022-10-10" class="block text-xs text-gray-500">
-      <%= post.created_at.strftime('%B %d, %Y %I:%M %p') %>
-    </time>
-    <h3 class="mt-0.5 text-lg font-bold text-gray-900">
-      <%= post.title %>
-    </h3>
-    <p class="mt-2 line-clamp-5 text-sm/relaxed text-gray-600">
-      <%= post.description %>
-    </p>
-    <% unless post.tags.blank? %>
-      <div class="mt-4 flex flex-wrap gap-1">
-        <% post.tags.split(' | ').each do |tag| %>
-          <span class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm text-purple-600">
-            <%= tag.strip %> <!-- Remove leading/trailing spaces -->
-          </span>
-        <% end %>
-      </div>
-    <% end %>
+<article class="rounded-lg border border-gray-100 bg-white p-4 pb-2 mb-5 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px]">
+  
+  <a href="<%= post_path(post) %>">
+    <%= render partial: 'post_body', locals: { post: post } %>
   </a>
-    <div class="flex items-end mt-4">
-      <button class="like-button text-red-600 middle none center mr-4 h-8 w-8 rounded-lg <%= post.liked ? 'bg-purple-200' : 'border border-purple-100'%>"
-        data-post-id="<%= post.id %>"
-        data-liked="<%= post.liked %>">
-        ❤️
-      </button>
-      <button class="bookmark-button middle none center mr-4 h-8 w-8 rounded-lg <%= post.bookmarked ? 'bg-purple-200' : 'border border-purple-100'%>"
-        data-post-id="<%= post.id %>"
-        data-bookmarked="<%= post.bookmarked %>">
-        📌
-      </button>
-    </div>
-  </article>
+
+  <%= render partial: 'post_actions', locals: { post: post } %>
+
+</article>
 <%#= will_paginate @posts %>
