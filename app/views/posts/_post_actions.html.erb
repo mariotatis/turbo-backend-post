@@ -1,25 +1,27 @@
 <div class="flex items-end mt-4">
-  <button class="like-button text-red-600 middle none center mr-1 h-8 w-8 rounded-lg"
+  <button class="like-button text-sky-500 middle none center mr-1 h-8 w-8 rounded-lg"
     data-post-id="<%= post.id %>"
     data-liked="<%= post.liked %>">
     <% if post.liked %>
-      <i class="fa-solid fa-heart text-red-600"></i>
+      <i class="fa-solid fa-heart"></i>
     <% else %>
-      <i class="fa-regular fa-heart text-red-600"></i>
+      <i class="fa-regular fa-heart"></i>
     <% end %>
   </button>
 
-  <button class="bookmark-button middle none center h-8 w-8 rounded-lg"
+  <button class="bookmark-button text-sky-500 middle none center h-8 w-8 rounded-lg"
     data-post-id="<%= post.id %>"
     data-bookmarked="<%= post.bookmarked %>">
     <% if post.liked %>
-      <i class="fa-solid fa-bookmark text-sky-900"></i>
+      <i class="fa-solid fa-bookmark"></i>
     <% else %>
-      <i class="fa-regular fa-bookmark text-sky-900"></i>
+      <i class="fa-regular fa-bookmark"></i>
     <% end %>
   </button>
 
-  <div class="middle text-sm/relaxed ml-auto rounded-lg">
-    <i class="<%= post.comments_counter > 0 ? "fa-solid" : "fa-regular" %> fa-comment text-sky-900"></i> <%= post.comments_counter %>
-  </div>
+  <% if post.comments_counter > 0 %>
+    <div class="text-sky-500 middle text-sm/relaxed ml-auto rounded-lg">
+      <i class="fa-solid fa-comment"></i>
+    </div>
+  <% end %>
 </div>

@@ -55,9 +55,9 @@ function toggleLike(event) {
 
       const heartIcon = button.querySelector('i.fa-heart');
       if (newLiked) {
-        heartIcon.className = "fa-solid fa-heart text-red-600";
+        heartIcon.className = "fa-solid fa-heart";
       } else {
-        heartIcon.className = "fa-regular fa-heart text-red-600";
+        heartIcon.className = "fa-regular fa-heart";
       }
     })
     .catch(error => {
@@ -81,9 +81,9 @@ function toggleBookmark(event) {
 
       const bookmarkIcon = button.querySelector('i.fa-bookmark');
       if (newBookmarked) {
-        bookmarkIcon.className = "fa-solid fa-bookmark text-sky-900";
+        bookmarkIcon.className = "fa-solid fa-bookmark";
       } else {
-        bookmarkIcon.className = "fa-regular fa-bookmark text-sky-900";
+        bookmarkIcon.className = "fa-regular fa-bookmark";
       }
     })
     .catch(error => {
