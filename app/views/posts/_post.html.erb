@@ -1,6 +1,6 @@
 <article class="rounded-lg border border-gray-100 bg-white p-4 pb-2 mb-5 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px]">
   
-  <a href="<%= post_path(post) %>">
+  <a data-turbo-preload href="<%= post_path(post) %>">
     <%= render partial: 'post_body', locals: { post: post } %>
   </a>
 

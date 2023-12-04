@@ -18,13 +18,12 @@
          </p>
          
          <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <a
+            <a data-turbo-preload
                class="block w-full rounded-lg bg-sky-500 px-5 py-3 text-sm font-medium text-white"
-               href="<%= new_user_session_path %>"
-               >
-            Sign In
+               href="<%= new_user_session_path %>">
+               Sign In
             </a>
-            <a class="block w-full rounded-lg border border-sky-500 px-5 py-3 text-sm font-medium text-sky-500"
+            <a data-turbo-preload class="block w-full rounded-lg border border-sky-500 px-5 py-3 text-sm font-medium text-sky-500"
                href="<%= new_user_registration_path %>">
                Sign Up  
             </a>

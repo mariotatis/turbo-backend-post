@@ -10,7 +10,7 @@
       <div>
          <div class="relative">
             <%= f.label :email, class: 'block text-sm' %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm', placeholder: 'Enter email', value: 'm@koombea.com'  %>
+            <%= f.email_field :email, autocomplete: "email", class: 'w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm', placeholder: 'Enter email', value: 'm@koombea.com'  %>
          </div>
       </div>
       <div class="" x-data="{ show: true }">
@@ -37,7 +37,7 @@
       </div>
       <div>
          <div class="text-center">
-            <%= f.submit "Log in", class: 'block w-full rounded-lg bg-sky-500 px-5 py-3 text-sm font-medium text-white' %>
+            <%= f.submit "Log in", class: 'cursor-pointer block w-full rounded-lg bg-sky-500 px-5 py-3 text-sm font-medium text-white' %>
          </div>
 
          <p class="mt-6 pl-4 text-sm"> 

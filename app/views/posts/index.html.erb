@@ -9,7 +9,7 @@
   <title bridge_title="Posts">Posts</title>
 
   <%#= link_to "", new_post_path, data: { controller: "bridge--nav-button", bridge_title: "New Post" } %>
-  <%= link_to "", profile_path, data: { controller: "bridge--nav-button", bridge_title: "Profile", bridge_systemName: "person.fill", bridge_color: "#0084c6" } %>
+  <%= link_to "", profile_path, data: { controller: "bridge--nav-button", bridge_title: "Profile", bridge_systemName: "person.fill", bridge_color: "#0084c6", turbo_preload: "true" } %>
   <%= link_to "", liked_path, data: { controller: "bridge--nav-button", bridge_title: "Liked", bridge_systemName: "heart.fill", bridge_position: "left", bridge_color: "#0084c6"} %>    
   <%= link_to "", bookmarked_path, data: { controller: "bridge--nav-button", bridge_title: "Pinned", bridge_systemName: "bookmark.fill", bridge_position: "left",bridge_color: "#0084c6"} %>
 <% end %>
@@ -22,16 +22,30 @@
 <%
 =end%>
 
-<% @posts.each do |post| %>
-  <%= render post %>
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+    <%= render post %>
+  <% end %>
+<%else %>
+  <div class="text-center mt-10">
+<i class="text-3xl text-sky-600 fa-regular fa-face-smile"></i>
+    <h3 class="mt-2 text-m font-medium text-gray-900">No posts</h3>
+    <p class="mt-1 text-m text-gray-500">Get started by creating a new post.</p>
+  </div>
 <% end %>
 
-<a href="<%= new_post_path %>">
+<% if turbo? %>
+  <a href="<%= new_post_path %>">
     <div class="fixed z-90 bottom-10 right-5 bg-sky-600 w-16 h-16 rounded-full drop-shadow-lg flex justify-center items-center text-white text-2xl hover:drop-shadow-2xl">
     <i class="fa-solid fa-plus"></i>
     </div>
-</a>
+  </a>
+<% end %>
 
-<script>
+<%
+=begin%>
+ <script>
   pageLoaded = false;
-</script>
+</script> 
+<%
+=end%>

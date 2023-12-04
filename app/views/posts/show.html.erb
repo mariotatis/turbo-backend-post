@@ -4,7 +4,14 @@
   <p style="color: green" data-controller="bridge--flash-message"><%= notice %></p>
 <% end %>
 
-<article class="rounded-lg border border-gray-100 p-4 mb-5 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px]">
+<article class="rounded-lg border border-gray-100 p-4 mb-5 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] relative">
+
+  <% unless turbo?%>
+    <div class="text-sky-500 absolute top-0 right-0 p-4">
+      <i class="fa-solid fa-pen-to-square"></i>
+      <%= link_to "Edit Post", edit_post_path(@post), class: "hide-on-mobile mt-1 text-sm", data: { controller: "bridge--nav-button", bridge_title: "Edit" } %>
+    </div>
+  <% end%>
 
   <%= render partial: 'post_body', locals: { post: @post } %>
   <%= render partial: 'post_actions', locals: { post: @post } %>
@@ -31,8 +38,8 @@
     <i class="fa-solid fa-comment text-sky-900"></i> <span id="commentCountList"><%= @post.comments_counter %></span> <%= @post.comments_counter == 1 ? "Comment" : "Comments"%>
   </h3>
 
+  <div id="comments_list" class="text-sm/relaxed mb-8">
   <% if @post.comments_counter > 0%>
-    <div id="comments_list" class="text-sm/relaxed mb-8">
       <% @post.comments.each_with_index do |comment, index| %>
         <div id="comment-<%= comment.id %>" class="text-base border-b border-gray-200 bg-white rounded-lg mb-4">
           <div class="flex justify-between items-center">
@@ -42,15 +49,15 @@
 
             <%= link_to post_comment_path(@post, comment), method: :delete,
                         class: "inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-50",
-                        data: { turbo_confirm: "Are you sure you want to remove this comment?", "turbo-method": :delete, "controller": "post", "action": "click->post#removeComment", "comment-id": comment.id } do %>
+                        data: { "turbo-method": :delete, "controller": "post", "action": "click->post#removeComment", "comment-id": comment.id } do %>
               <i class="fa-regular fa-trash-can"></i>
             <% end %>
           </div>
           <p class="text-gray-500 mb-4"><%= comment.comment %></p>
         </div>
       <% end %>
-    </div>
   <% end %>
+  </div>
 
   <%= form_with(model: [@post, Comment.new], local: true) do |form| %>
     <div class='flex flex-col relative w-full rounded-lg overflow-hidden mx-auto' x-data="{maximum: ''}">
@@ -62,7 +69,7 @@
 
     <%= form.hidden_field :user_id, value: current_user.id %>
     <div class="flex items-center justify-between mt-4">      
-        <%= form.submit 'Add Comment', class: 'float-right block rounded-lg bg-sky-500 px-5 py-3 text-sm font-medium text-white',
+        <%= form.submit 'Add Comment', class: 'cursor-pointer float-right block rounded-lg bg-sky-500 px-5 py-3 text-sm font-medium text-white',
           data: { turbo_confirm: "Are you sure you want to add this comment?", "controller": "post", "action": "click->post#addComment" }
         %>
 

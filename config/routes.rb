@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#profile'
   get '/profile/settings', to: 'users#settings', as: :user_settings
+  get '/profile/settings/password', to: 'users#password_update', as: :user_password_update
+
+  get '/profile/settings/remove_account', to: 'users#remove_account', as: :remove_account
+
+
 
   get '/home', to: 'pages#home', as: :home
 
@@ -28,8 +33,9 @@ Rails.application.routes.draw do
 
   get '/posts/fetch_page/:post_id', to: 'posts#fetch_page', as: 'fetch_page'
   
+
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
+    registrations: 'registrations/registrations',
     sessions: 'registrations/sessions' # Specify the custom sessions controller here
   }
 

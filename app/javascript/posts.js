@@ -23,7 +23,6 @@ document.addEventListener("turbo:load", function() {
   }
 });
 
-
 // //toggleBookmark and toggleLike are very similar, so we can refactor them into a single function
 
 document.addEventListener("turbo:load", function() {

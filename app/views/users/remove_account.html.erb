@@ -1,0 +1,12 @@
+<title bridge_title="Profile">Remove Account</title>
+
+<div class="mx-auto mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] sm:p-6 lg:p-8">
+
+  <h3 class="font-semibold">Danger Zone</h3>
+  <p class="text-s mb-5">
+  Unhappy?<br/>By proceeding with the account removal, please be aware that all your data and associated information will be permanently deleted. This action is irreversible.
+  </p>
+  <p>
+    <%= link_to "Remove Account", registration_path(current_user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, method: :delete, class: "text-red-400 mt-6 font-semibold"%>
+  </p>
+</div>

@@ -21,16 +21,16 @@
                 <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                     <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                         <li>
-                            <a href="<%= posts_path%>" class="<%= request.path == '/' ? 'text-blue-600' : 'text-white' %> block py-2 pr-4 pl-3 rounded lg:p-0 hover:text-gray-400">All</a>
+                            <a href="<%= posts_path%>" class="<%= request.path == '/' || request.path == '/posts' ? 'text-sky-500' : 'text-white' %> block py-2 pr-4 pl-3 rounded lg:p-0 hover:text-gray-400">All</a>
                         </li>
                         <li>
-                            <a href="<%= liked_path%>" class="<%= request.path == '/liked' ? 'text-blue-600' : 'text-white' %> block py-2 pr-4 pl-3 rounded lg:p-0 hover:text-gray-400"><i class="fa-solid fa-heart"></i> Liked</a>
+                            <a href="<%= liked_path%>" class="<%= request.path == '/liked' ? 'text-sky-500' : 'text-white' %> block py-2 pr-4 pl-3 rounded lg:p-0 hover:text-gray-400"><i class="fa-solid fa-heart"></i> Liked</a>
                         </li>
                         <li>
-                            <a href="<%= bookmarked_path%>" class="<%= request.path == '/bookmarked' ? 'text-blue-600' : 'text-white' %> block py-2 pr-4 pl-3 rounded lg:p-0 hover:text-gray-400"><i class="fa-solid fa-thumbtack"></i> Bookmarked</a>
+                            <a href="<%= bookmarked_path%>" class="<%= request.path == '/bookmarked' ? 'text-sky-500' : 'text-white' %> block py-2 pr-4 pl-3 rounded lg:p-0 hover:text-gray-400"><i class="fa-solid fa-thumbtack"></i> Bookmarked</a>
                         </li>
                         <li>
-                            <a href="<%= new_post_path %>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">New Post</a>
+                            <a href="<%= new_post_path %>" class="text-white bg-sky-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">New Post</a>
                         </li>                             
                     </ul>
                 </div>
@@ -38,3 +38,4 @@
         </div>
     </nav>
 </header>
+

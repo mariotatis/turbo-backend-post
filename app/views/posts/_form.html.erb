@@ -34,24 +34,24 @@
     <div>
     <p class="text-s ml-1 pt-3 text-gray-500">Select tags for your post</p>
       <div class="tag-cloud flex justify-center flex-wrap gap-2 p-4  w-full my-1">
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Lucas</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Mateo</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Sandri</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Family</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Home</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Travel</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Food</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Art</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Music</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Tech</button>
-          <button class="whitespace-nowrap rounded-full bg-purple-200 px-2.5 py-0.5 text-sm/relaxed text-purple-600" onclick="toggleTag(this)">Stuff</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Lucas</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Mateo</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Sandri</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Family</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Home</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Travel</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Food</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Art</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Music</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Tech</button>
+          <button class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm/relaxed bg-sky-100 text-sky-900" onclick="toggleTag(this)">Stuff</button>
           <!-- Add more tags here -->
       </div>
       <%= form.hidden_field :tags, class: "w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm capitalize" %>
     </div>
 
     <div class="flex items-center justify-between my-2">      
-      <%= form.submit "Save", class: "hide-on-mobile cursor-pointer block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white", data: { controller: "bridge--nav-button", bridge_title: "Save" } %>
+      <%= form.submit "Save", class: "hide-on-mobile cursor-pointer block w-full rounded-lg bg-sky-500 px-5 py-3 text-sm font-medium text-white", data: { controller: "bridge--nav-button", bridge_title: "Save" } %>
     </div>
   <% end %>
 

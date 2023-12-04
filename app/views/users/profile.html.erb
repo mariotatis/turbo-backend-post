@@ -1,9 +1,19 @@
 <title bridge_title="Profile">Profile</title>
-<%= link_to "", user_settings_path, data: { controller: "bridge--nav-button", bridge_title: "Settings", bridge_systemName: "gearshape.fill"} %>
+<%= link_to "", user_settings_path, data: { controller: "bridge--nav-button", bridge_title: "Settings", bridge_systemName: "gearshape.fill", turbo_preload: "true"} %>
+
+<article class="rounded-lg border border-gray-100 bg-white p-4 pb-2 mb-5 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] relative">
+
+<% unless turbo?%>
+  <div class="text-sky-500 absolute top-0 right-0 p-4">
+    <a href="/profile/settings">
+      <i class="text-2xl fa-solid fa-gear"></i>
+    </a>
+  </div>
+<% end%>
 
 <div class="p-10 mt-20 font-sans w-full flex">
   <div class="card w-96 mx-auto bg-white">
-    <img class="w-32 mx-auto rounded-full -mt-20" src="https://randomuser.me/api/portraits/lego/6.jpg" alt="">
+    <img class="w-32 mx-auto rounded-full -mt-20" src="https://randomuser.me/api/portraits/lego/4.jpg" alt="">
     <div class="text-center mt-2 font-light text-s"><%= @user.email%></div>
     <div class="text-center text-3xl font-bold text-gray-900"><%= @user.name.titleize %></div>
     <hr class="mt-8">
@@ -30,3 +40,36 @@
     
   </div>
 </div>
+
+<div data-controller="menu bridge--menu">
+  <button id="settings-button-options" class="button hidden" data-controller="bridge--overflow-menu"
+    data-action="click->bridge--menu#show click->menu#show" data-bridge-title="Options">Menu
+  </button>
+  <div class="dialog hidden" data-menu-target="dialog" data-action="click@window->menu#hideOnClickOutside">
+    <div class="dialog-content">
+      <span class="dialog-close" data-action="click->menu#hide">&times;</span>
+      <p data-bridge--menu-target="title">Select an option</p>
+      
+      <a
+        class="button"
+        data-menu-target="item"
+        data-bridge--menu-target="item"
+        data-action="click->menu#itemSelected"
+        data-turbo-action="replace" rel="nofollow" data-method="delete" href="/users/edit">
+        Edit Profile
+      </a>
+
+      <a
+        class="button"
+        data-menu-target="item"
+        data-bridge--menu-target="item"
+        data-action="click->menu#itemSelected"
+        data-turbo-action="replace" rel="nofollow" data-method="delete" href="/users/sign_out">
+        Log Out
+      </a>
+    </div>
+  </div>
+</div> 
+
+
+</article>

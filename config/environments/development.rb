@@ -7,7 +7,7 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
 
-  config.hosts << "7e2c-161-10-83-95.ngrok-free.app"
+  config.hosts << "4262-161-10-84-38.ngrok-free.app"
   config.hosts << "localhost"
 
   config.cache_classes = false

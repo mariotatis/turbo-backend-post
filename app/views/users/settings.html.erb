@@ -1,11 +1,56 @@
 <title bridge_title="Settings">Settings</title>
 
-<label class="relative inline-flex items-center cursor-pointer">
-  <input type="checkbox" value="" class="sr-only peer" checked>
-  <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-  <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Checked toggle</span>
-</label>
+<div class="mt-4 rounded-lg border border-gray-100 p-3 mb-5 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px]">
+  <div class="flex max-h-[400px] w-full flex-col">
+    
+    <a data-turbo-action="replace" class="group flex items-center gap-x-5 rounded-md px-2.5 py-2 text-s text-gray-500" href="/users/edit">
+      <div class="flex h-12 w-12 items-center rounded-lg bg-gray-100 text-black">
+        <span class="text-sky-500 tag w-full text-center text-xl font-medium text-gray-700">
+          <i class="fa-solid fa-user"></i>
+        </span>
+      </div>
+      <div class="flex flex-col items-start justify-between font-light text-gray-600">
+        <p class="text-m font-medium">Edit Profile</p>
+      </div>
+    </a>
 
-<div class="text-center font-normal p-3">
-  <%= link_to 'Log Out', destroy_user_session_path, method: :delete, data: { turbo_action: "replace" }, class: 'text-s text-gray-500'%>
+    <a class="group flex items-center gap-x-5 rounded-md px-2.5 py-2 text-s text-gray-500" href="/profile/settings/password">
+      <div class="flex h-12 w-12 items-center rounded-lg bg-gray-100 text-black">
+        <span class="text-sky-500 tag w-full text-center text-xl font-medium text-gray-700">
+          <i class="fa-solid fa-lock"></i>
+        </span>
+      </div>
+      <div class="flex flex-col items-start justify-between font-light text-gray-600">
+        <p class="text-m font-medium">Change Password</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="mt-4 rounded-lg border border-gray-100 p-3 mb-5 shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px]">
+    
+    <h3 class="my-2 px-4 text-[15px] text-gray-400">Danger Zone</h3>
+
+    <a data-turbo-action="replace" class="group flex items-center gap-x-5 rounded-md px-2.5 py-2 text-s text-gray-500" rel="nofollow" data-method="delete" href="/users/sign_out">
+      <div class="flex h-12 w-12 items-center rounded-lg bg-gray-100 text-black">
+        <span class="text-sky-500 tag w-full text-center text-xl font-medium text-gray-700">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </span>
+      </div>
+      <div class="flex flex-col items-start justify-between font-light text-gray-600">
+        <p class="text-m font-medium">Log Out</p>
+      </div>
+    </a>
+
+    <a class="group flex items-center gap-x-5 rounded-md px-2.5 py-2 text-s text-gray-500" rel="nofollow" data-method="delete" href="/profile/settings/remove_account">
+      <div class="flex h-12 w-12 items-center rounded-lg bg-gray-100 text-black">
+        <span class="text-sky-500 tag w-full text-center text-xl font-medium text-gray-700">
+          <i class="fa-solid fa-user-minus"></i>
+        </span>
+      </div>
+      <div class="flex flex-col items-start justify-between font-light text-gray-600">
+        <p class="text-m font-medium">Remove Account</p>
+        <span class="text-sm font-light text-gray-500">Can't be Undone.</span>
+      </div>
+    </a>
 </div>

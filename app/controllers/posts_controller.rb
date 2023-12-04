@@ -59,7 +59,6 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id]) # Ensure the post belongs to the current user
-  
     respond_to do |format|
       if @post.update(post_params)
         format.html { refresh_or_redirect_to post_url(@post), notice: "Post was successfully updated." }

@@ -13,16 +13,35 @@ class Registrations::RegistrationsController < Devise::RegistrationsController
   # def create
   #   super
   # end
-
-  # GET /resource/edit
+  #GET /resource/edit
   # def edit
+  #   configure_account_update_params
+  #   puts "edit------------///////////////////////-----------------"
   #   super
   # end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
+ # PUT /resource
+
+ def update
+  configure_account_update_params
+  puts "update-----------------///////////////////////-----------------"
+  # super
+  # refresh_or_redirect_to user_settings_path, notice: "Your account was successfully updated."
+  # # super
+  self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+  
+  if update_resource(resource, account_update_params)
+    bypass_sign_in resource, scope: resource_name
+    respond_to do |format|   
+      format.html { refresh_or_redirect_to user_settings_path, notice: "Your account was successfully updated." }
+    end
+  else
+    clean_up_passwords resource
+    set_minimum_password_length
+    respond_with resource
+  end
+
+end
 
   # DELETE /resource
   # def destroy
@@ -38,17 +57,24 @@ class Registrations::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  # def after_update_path_for(resource)
   # end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :password_confirmation, :current_password])
+  end
+
+  #If you have extra params to permit, append them to the sanitizer.
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation])
+  end
+
+  #If you have extra params to permit, append them to the sanitizer.
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :password_confirmation, :current_password])
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

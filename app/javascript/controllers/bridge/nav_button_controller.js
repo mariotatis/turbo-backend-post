@@ -14,9 +14,9 @@ export default class extends BridgeComponent {
     const systemIcon = this.bridgeElement.bridgeAttribute("systemIcon");
     const systemName = this.bridgeElement.bridgeAttribute("systemName");
     const color = this.bridgeElement.bridgeAttribute("color");
+    const action = this.bridgeElement.bridgeAttribute("action");
 
-
-    this.send("connect", { title, position, systemIcon, systemName, color }, () => {
+    this.send("connect", { title, position, systemIcon, systemName, color, action }, () => {
       this.element.click();
     });
   }
